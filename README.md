@@ -61,37 +61,7 @@ flood is a linear penalty on release above the safe threshold.
 | All figures | `python figures/fig*.py` | seconds |
 
 Every long step writes a checkpoint and supports `--resume`, so runs can be
-interrupted. Small summary CSVs are committed under `results/`, so **the
-figures reproduce without re-running the expensive stages.**
-
-## Benchmarks: separating the error sources
-
-The oracles are designed to decompose *why* performance falls short, rather than
-just reporting a gap:
-
-```
-J_truelookup − J_oracle_atlas    representation error   exposure space misses drivers
-J_oracle_atlas − J_oracle_free   atlas error            finite, pre-computed policy set
-J_oracle_free  − J_trueopt       policy-class error     rigidity of the 7-param shape
-```
-
-- **`benchmarks/oracle_freeparam.py`** — same 7-parameter *shape*, but parameters
-  continuous instead of restricted to the atlas. Initialised at the atlas oracle
-  and accepting only strict improvements, so `J_free ≤ J_atlas` by construction
-  and the measured atlas error is a **conservative lower bound**.
-- **`benchmarks/oracle_perfect.py`** — no policy form at all. Because the dynamics
-  are linear and both cost terms are convex in release, the perfect-foresight
-  problem is a **convex QP with a unique global optimum** (solved with OSQP) — no
-  dynamic-programming grid and no discretisation error. Terminal storage is
-  matched to the policy being compared against, so the bound stays valid.
-
-## Diagnostics
-
-| Script | Question |
-|---|---|
-| `diagnostics/posterior_accuracy.py` | Is the belief calibrated? (`z = (mean − true)/sd`) |
-| `diagnostics/q_sensitivity.py` | How sensitive are results to the learning rate `Q`? |
-| `diagnostics/memory_table.py` | How fast does the belief forget? (impulse-response half-life) |
-
+interrupted. Small summary CSVs are committed under `results/`, so the
+figures reproduce without re-running the expensive stages.
 
 Licensed MIT (see [LICENSE](LICENSE)).
