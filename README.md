@@ -93,10 +93,5 @@ J_oracle_free  − J_trueopt       policy-class error     rigidity of the 7-para
 | `diagnostics/q_sensitivity.py` | How sensitive are results to the learning rate `Q`? |
 | `diagnostics/memory_table.py` | How fast does the belief forget? (impulse-response half-life) |
 
-## Attribution
-
-The reservoir model, the 7-parameter policy rule and all input data come from
-prior work and are **not** our contribution — see **[UPSTREAM.md](UPSTREAM.md)**.
-Please cite that work alongside ours.
 
 Licensed MIT (see [LICENSE](LICENSE)).
