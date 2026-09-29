@@ -1,0 +1,9 @@
+# Core (required)
+numpy>=1.21
+pandas>=1.3
+scipy>=1.7
+numba>=0.55          # JIT for the daily water-balance loop
+matplotlib>=3.4
+
+# Perfect-foresight benchmark only (benchmarks/oracle_perfect.py)
+osqp>=1.0            # sparse convex QP solver
